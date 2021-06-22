@@ -2,9 +2,9 @@
 
 //Global Variables ---------------------------------------------------------
 const imageSelectorElem = document.getElementById('all_images');
-const leftImgElem = document.getElementById('image_left');
-const centerImgElem = document.getElementById('image_center');
-const rightImgElem = document.getElementById('image_right');
+const leftImgElem = document.getElementById('image_left_picture');
+const centerImgElem = document.getElementById('image_center_picture');
+const rightImgElem = document.getElementById('image_right_picture');
 const leftH3Elem = document.getElementById('image_left_h3');
 const centerH3Elem = document.getElementById('image_center_h3');
 const rightH3Elem = document.getElementById('image_right_h3');
@@ -39,52 +39,57 @@ Product.prototype.renderSingleProduct = function (imgPosition, h3Position) {
 
 //Global Functions ---------------------------------------------------------
 
-function pickThreeImages() {
-
-  let leftImageIndex = Math.floor(Math.random() * Product.allProducts.length);
-  leftImage = Product.allProducts[leftImageIndex];
-
-  let centerImageIndex = Math.floor(Math.random() * Product.allProducts.length);
-  centerImage = Product.allProducts[centerImageIndex];
-
-  let rightImageIndex = Math.floor(Math.random() * Product.allProducts.length);
-  rightImage = Product.allProducts[rightImageIndex];
-
-  while (centerImage === null || centerImage === leftImage) {
-    centerImageIndex = Math.floor(Math.random() * Product.allProducts.length);
-    centerImage = Product.allProducts[centerImageIndex];
-  }
-
-  while (rightImage === null || rightImage === centerImage) {
-    rightImageIndex = Math.floor(Math.random() * Product.allProducts.length);
-    rightImage = Product.allProducts[rightImageIndex];
-  }
-
-  leftImage.renderSingleProduct(leftImgElem, leftH3Elem);
-  centerImage.renderSingleProduct(centerImgElem, centerH3Elem);
-  rightImage.renderSingleProduct(rightImgElem, rightH3Elem);
+function getRandomIndex() {
+  return Math.floor(Math.random() * Math.floor(Product.allProducts.length));
 }
 
-function renderResults() {
-  productLikesElem.innerHTML = '';
+function chooseThreeProducts() {
+  let lastProducts = [currentLeftProduct, currentCenterProduct, currentRightProduct];
 
-  for (let i = 0; i < Product.allProducts.length; i++) {
-    let product = Product.allProducts[i];
-    let liElem = document.createElement('li');
-    liElem.textContent = `${product.name}: ${product.likes}`;
-    productLikesElem.appendChild(liElem);
+  while (lastProducts.includes(currentLeftProduct)) {
+    let randomIndex = getRandomIndex();
+    currentLeftProduct = Product.allProducts[randomIndex];
   }
+  lastProducts.push(currentLeftProduct);
+
+  while (lastProducts.includes(currentCenterProduct)) {
+    let randomIndex = getRandomIndex();
+    currentCenterProduct = Product.allProducts[randomIndex];
+  }
+  lastProducts.push(currentCenterProduct);
+
+  while (lastProducts.includes(currentRightProduct)) {
+    let randomIndex = getRandomIndex();
+    currentRightProduct = Product.allProducts[randomIndex];
+  }
+  lastProducts.push(currentRightProduct);
 }
+
+currentLeftProduct.renderSingleProduct(leftImgElem);
+currentCenterProduct.renderSingleProduct(centerImgElem);
+currentRightProduct.renderSingleProduct(rightImgElem);
+
+
+// function renderResults() {
+//   productLikesElem.innerHTML = '';
+
+//   for (let i = 0; i < Product.allProducts.length; i++) {
+//     let product = Product.allProducts[i];
+//     let liElem = document.createElement('li');
+//     liElem.textContent = `${product.name}: ${product.likes}`;
+//     productLikesElem.appendChild(liElem);
+//   }
+// }
 
 function handleClick(event) {
   //alert(event.target.id); play with and see if this does anything
 
   let id = event.target.id
-  if (id === 'image_left' || id === 'image_center' || id === 'image_right') {
+  if (id === 'image_left_picture' || id === 'image_center_picture' || id === 'image_right_picture') {
     likeCounter++;
-    if (id === 'image_left') {
+    if (id === 'image_left_picture') {
       leftImage.likes++;
-    } else if (id === 'image_center') {
+    } else if (id === 'image_center_picture') {
       centerImage.like++;
     } else {
       rightImage++;
