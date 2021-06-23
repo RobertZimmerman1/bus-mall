@@ -16,49 +16,6 @@ let leftImage = null;
 let centerImage = null;
 let rightImage = null;
 
-//Chart Script ----------------Currently Broken---------------------------------
-// const ctx = document.getElementById('myChart').getContext('2d');
-
-// const data = [1, 2, 3, 4, 5];
-// const labelColors = ['red', 'blue', 'green', 'pink', 'yellow'];
-
-// const  myChart = new Chart(ctx, {
-//     type: 'bar',
-//     data: {
-//         labels: labelColors,
-//         datasets: [{
-//             label: '# of Votes',
-//             data: data,
-//             backgroundColor: labelColors
-//         }]
-//             [
-//                 'rgba(255, 99, 132, 0.2)',
-//                 'rgba(54, 162, 235, 0.2)',
-//                 'rgba(255, 206, 86, 0.2)',
-//                 'rgba(75, 192, 192, 0.2)',
-//                 'rgba(153, 102, 255, 0.2)',
-//                 'rgba(255, 159, 64, 0.2)'
-//             ],
-//             borderColor: [
-//                 'rgba(255, 99, 132, 1)',
-//                 'rgba(54, 162, 235, 1)',
-//                 'rgba(255, 206, 86, 1)',
-//                 'rgba(75, 192, 192, 1)',
-//                 'rgba(153, 102, 255, 1)',
-//                 'rgba(255, 159, 64, 1)'
-//             // ],
-//             borderWidth: 1
-//         }]
-//     },
-//     options: {
-//         scales: {
-//             y: {
-//                 beginAtZero: true
-//             }
-//         }
-//     }
-// });
-
 //Constructor Function ---------------------------------------------------------
 function Product(name, image) {
   this.name = name;
@@ -156,6 +113,7 @@ function handleClick(event) {
       productLikesElem.appendChild(liElem);
     }
     imageSelectorElem.removeEventListener('click', handleClick);
+    renderProductChart();
 }
 }
 
@@ -166,3 +124,40 @@ imageSelectorElem.addEventListener('click', handleClick);
 createProducts();
 chooseThreeProducts();
 
+//Chart Script --------------------------------------------------------------
+
+function renderProductChart() {
+
+const productNameArray = [];
+const productLikesArray = []
+
+for (let i = 0; i < Product.allProducts.length; i++) {
+  productNameArray.push(Product.allProducts[i].name);
+  productLikesArray.push(Product.allProducts[i].likes);
+}
+
+var ctx = document.getElementById('Chart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: productNameArray,
+        datasets: [{
+            label: '# of Votes',
+            data: productLikesArray,
+            backgroundColor: [
+                'rgba(0, 0, 0, 0.2)',
+            ],
+            borderColor: [
+                'rgba(0, 0, 0, 1)',
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+})}

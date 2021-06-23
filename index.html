@@ -7,29 +7,30 @@
 </head>
 
 <body>
-  <!-- <canvas id="chart"></canvas> -->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@3.3.2/dist/chart.min.js"></script>
-  
   <header>
     <h1>Bus-Mall</h1>
-    <ul>
-      <li>Electronics</li>
-      <li>Home</li>
-      <li>Pets</li>
-      <li>Food & Wine</li>
-      <li>Recreation</li>
-    </ul>
-
-    <div>
-      <fieldset>
-        <input name="search" type="text" />
-      </fieldset>
-      <img src="img/search.jpg" alt="search icon" width=60px />
+    <nav>
+      <div id="nav-buttons"></div>
+        <ul>
+          <li>Electronics</li>
+          <li>Home</li>
+          <li>Pets</li>
+          <li>Food & Wine</li>
+          <li>Recreation</li>
+        </ul>
     </div>
+
+      <div id="search">
+        <fieldset>
+          <input name="search" type="text"/>
+        </fieldset>
+        <img src="img/search.jpg" alt="search icon" width=70px />
+      </div>
+    </nav>
   </header>
 
   <main>
-    <h2>What life changing products can we interest you in today?</h2>
+    <h2 id= "prompt">What life changing products can we interest you in today?</h2>
     <section id="all_images">
       <div id="image_left">
         <img id="image_left_picture" src="./img/bag.jpg" height="200px" margin="40px"/>
@@ -49,7 +50,7 @@
     </section>
 
     <section>
-      <section>
+      <section id="results-section">
         <h2>Product Likes</h2>
         <ul id="product_likes">
           <li>R2 D2 Tote: 0</li>
@@ -77,24 +78,27 @@
   </main>
 
   <footer>
+    <div id="footer-content">
+      <section id="media">
+        <p>Follow Us:</p>
+        <img src="https://image.flaticon.com/icons/png/512/1051/1051309.png" height=30px />
+        <img src="https://image.flaticon.com/icons/png/512/121/121503.png" height=30px/>
+        <img src="https://image.flaticon.com/icons/png/512/121/121509.png" height=30px/>
+        <img src="https://image.flaticon.com/icons/png/512/121/121498.png" height=30px/>
+        <img src="https://image.flaticon.com/icons/png/512/1051/1051326.png" height=30px/>
+      </section>
 
-    <section>
-      <p>Follow Us:</p>
-      <img src="https://via.placeholder.com/30" />
-      <img src="https://via.placeholder.com/30" />
-      <img src="https://via.placeholder.com/30" />
-      <img src="https://via.placeholder.com/30" />
-      <img src="https://via.placeholder.com/30" />
-    </section>
-
-    <section>
-      <button>Sign Up</button>
-    </section>
-    
+      <section>
+        <button>Sign Up</button>
+      </section>
+    </div>
   </footer>
-
-  <script src="./app.js"></script>"
-
+  <div class="chart">
+    <canvas id="Chart"></canvas>
+  </div>
+  
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@3.3.2/dist/chart.min.js"></script>
+  <script src="./app.js"></script>
 </body>
 
 </html>
