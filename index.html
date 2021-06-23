@@ -7,7 +7,9 @@
 </head>
 
 <body>
-
+  <!-- <canvas id="chart"></canvas> -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@3.3.2/dist/chart.min.js"></script>
+  
   <header>
     <h1>Bus-Mall</h1>
     <ul>
@@ -22,40 +24,31 @@
       <fieldset>
         <input name="search" type="text" />
       </fieldset>
-      <img src="images/search.jpg" alt="search icon" width=60px />
+      <img src="img/search.jpg" alt="search icon" width=60px />
     </div>
-
   </header>
 
   <main>
     <h2>What life changing products can we interest you in today?</h2>
     <section id="all_images">
-
       <div id="image_left">
-        <img id="image_left_picture" src="https://via.placeholder.com/150" />
-        <h3 id="image_left_h2">The Left Picture</h3>
+        <img id="image_left_picture" src="./img/bag.jpg" height="200px" margin="40px"/>
+        <!-- <h3 id="image_left_h2">The Left Picture</h3> -->
       </div>
-
       <div id="image_center">
-        <img id="image_center_picture" src="https://via.placeholder.com/150" />
-        <h3 id=="image_center_h3">The Center Picture</h3>
+        <img id="image_center_picture" src="./img/banana.jpg" height="200px"/>
+        <!-- <h3 id="image_center_h3">The Center Picture</h3> -->
       </div>
-
       <div id="image_right">
-        <img id="image_right_picture" src="https://via.placeholder.com/150" />
-        <h3 id="image_right_h3">The Right Picture</h3>
+        <img id="image_right_picture" src="./img/bathroom.jpg" height="200px"/>
+        <!-- <h3 id="image_right_h3">The Right Picture</h3> -->
       </div>
-
     </section>
 
     <section id="checkout">
     </section>
 
-    <div>
-      <p>Checkout Section</p>
-    </div>
     <section>
-
       <section>
         <h2>Product Likes</h2>
         <ul id="product_likes">
@@ -80,11 +73,11 @@
           <li>Wine Glass: 0</li>
         </ul>
       </section>
-
     </section>
   </main>
 
   <footer>
+
     <section>
       <p>Follow Us:</p>
       <img src="https://via.placeholder.com/30" />
@@ -93,10 +86,11 @@
       <img src="https://via.placeholder.com/30" />
       <img src="https://via.placeholder.com/30" />
     </section>
+
     <section>
       <button>Sign Up</button>
     </section>
-    <p>Footer</p>
+    
   </footer>
 
   <script src="./app.js"></script>"
